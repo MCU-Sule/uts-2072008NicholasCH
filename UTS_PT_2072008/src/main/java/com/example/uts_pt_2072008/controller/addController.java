@@ -19,13 +19,14 @@ public class addController {
 
     public void submit(ActionEvent actionEvent) {
         int hasil;
-        if((txtUserName.getText() == null) || (txtPassword.getText() == null) ){
+        if((txtUserName.getText().isEmpty()) || (txtPassword.getText().isEmpty()) ){
             hasil = 0;
         } else {
             int id = 0;
             String nama = txtUserName.getText();
             String pass = txtPassword.getText();
             hasil = userDao.addData(new User(id, nama, pass));
+            reset();
         }
         if (hasil > 0){
             alert = new Alert(Alert.AlertType.INFORMATION, "Data successfully added!", ButtonType.OK);

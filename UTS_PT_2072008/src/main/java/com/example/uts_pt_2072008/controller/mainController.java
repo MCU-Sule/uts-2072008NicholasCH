@@ -60,7 +60,14 @@ public class mainController {
     Scene scene;
     FXMLLoader fxmlLoader;
 
-    public void  initialize() {
+    public void  initialize() throws IOException {
+        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("UTSSecondPage.fxml"));
+        scene = new Scene(fxmlLoader.load(), 350, 170);
+        stage = new Stage();
+        stage.setTitle("Add New User");
+        stage.setScene(scene);
+        stage.initModality(Modality.APPLICATION_MODAL);
+
         filterData = FXCollections.observableArrayList(
                 "All",
                 "Action",
@@ -98,12 +105,7 @@ public class mainController {
         }
     }
 
-    public void AddUserAction(ActionEvent actionEvent) throws IOException {
-        scene = new Scene(fxmlLoader.load(), 350, 170);
-        stage = new Stage();
-        stage.setTitle("Add New User");
-        stage.setScene(scene);
-        stage.initModality(Modality.APPLICATION_MODAL);
+    public void AddUserAction(ActionEvent actionEvent){
         stage.showAndWait();
         tampilan();
     }
